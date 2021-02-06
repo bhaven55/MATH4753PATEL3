@@ -23,8 +23,8 @@ getwd()
 ## Task 2
 
 ```{R}
-epagas <- read.csv("EPAGAS.csv")
-head(mpg)
+epagas = read.csv("EPAGAS.csv")
+head(epagas)
 ```
 
 ## Task 3
@@ -41,5 +41,49 @@ Find z and then verify that mean of z is equal to 0 and standard deviation is eq
 ```{R}
 z <- (mpg - mean(mpg)) / sd(mpg)
 head(z)
-
+print(paste0("mean = ", round(mean(z), digits = 4)), quote=FALSE)
+print(paste0("variance = ", var(z)), quote=FALSE)
+print(paste0("standard deviation = ", sd(z)), quote=FALSE)
 ```
+
+A dotplot constructed with lattice package. Red = outlier, Blue = possible outlier
+
+```{R}
+mycol=ifelse(abs(z)>3, "Red",
+      ifelse(abs(z)>=2 &abs(z)<=3,"Blue", "Black"))
+library(lattice)
+dotplot(mpg,col=mycol, main = "dotplot of mpg values")
+```
+
+## Task 4
+
+Make a boxplot of mpg variables with the following conditions: black box, notch indictor for the median value, title on the graph, horizontal plot
+
+```{R}
+boxplot(mpg, main = "boxplot of mpg values", xlab = "MPG", col="green3", horizontal=TRUE, notch=TRUE)
+```
+
+Prediction and actual proportion of the data within 2 sd of the mean mpg
+
+prediction: 1 - (1/k^2)
+
+```{R}
+#prediction:
+3/4
+#actual:
+length(mpg[abs(z)<2])/length(mpg)
+```
+
+As we can see the Chebyshev's theorem does not agree with the data.
+
+empirical rule prediction and exact proportion within 2 standard deviation
+
+```{R}
+#prediction:
+19/20
+#actual:
+length(mpg[mean(mpg)-2*sd(mpg) < mpg & mpg < mean(mpg)+ 2*sd(mpg) ])/length(mpg)
+```
+empirical rule's prediction and exact value correspond really well. Our predicted value was .95 and exact value is .96
+
+We can say the empirical rule is valid in this case because close to 95% of the distribution is within two standard deviation of the mean.
