@@ -1,0 +1,45 @@
+---
+title: "Lab2"
+author: "Bhaven Patel"
+date: "2/4/2021"
+output: 
+  html_document:
+    toc: yes
+    toc_float: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Tasks
+
+## Task 1
+
+```{R}
+getwd()
+```
+
+## Task 2
+
+```{R}
+epagas <- read.csv("EPAGAS.csv")
+head(mpg)
+```
+
+## Task 3
+
+Make mpg into an object with MPG data from epagas
+
+```{R}
+mpg <- epagas$MPG
+head(mpg)
+```
+
+Find z and then verify that mean of z is equal to 0 and standard deviation is equal to 1
+
+```{R}
+z <- (mpg - mean(mpg)) / sd(mpg)
+head(z)
+
+```
