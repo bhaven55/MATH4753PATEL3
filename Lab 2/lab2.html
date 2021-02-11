@@ -326,6 +326,16 @@ dotplot(mpg,col=mycol, main = &quot;dotplot of mpg values&quot;)</code></pre>
 <pre class="r"><code>#actual:
 length(mpg[abs(z)&lt;2])/length(mpg)</code></pre>
 <pre><code>## [1] 0.96</code></pre>
+<p>As we can see the Chebyshev’s theorem does not agree with the data.</p>
+<p>empirical rule prediction and exact proportion within 2 standard deviation</p>
+<pre class="r"><code>#prediction:
+19/20</code></pre>
+<pre><code>## [1] 0.95</code></pre>
+<pre class="r"><code>#actual:
+length(mpg[mean(mpg)-2*sd(mpg) &lt; mpg &amp; mpg &lt; mean(mpg)+ 2*sd(mpg) ])/length(mpg)</code></pre>
+<pre><code>## [1] 0.96</code></pre>
+<p>empirical rule’s prediction and exact value correspond really well. Our predicted value was .95 and exact value is .96</p>
+<p>We can say the empirical rule is valid in this case because close to 95% of the distribution is within two standard deviation of the mean.</p>
 </div>
 </div>
 
