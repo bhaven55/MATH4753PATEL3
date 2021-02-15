@@ -1,0 +1,15 @@
+---
+title: "lab4"
+author: "Bhaven Patel"
+date: "2/15/2021"
+output: 
+  html_document:
+    toc: yes
+    toc_float: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
